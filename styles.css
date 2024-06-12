@@ -1,0 +1,29 @@
+body {
+    background: url(background.jpg);
+}
+.root {
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    font-size: 44px;
+    background: -webkit-linear-gradient(#000000, #84bbdf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.root div {
+    background: -webkit-linear-gradient(#ffffff, #7bdbf3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@media screen and (max-width: 900px) {
+    .root h1 {
+        font-size: 22px;
+    }
+    .root div {
+        font-size: 25px;
+    }
+}
