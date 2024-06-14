@@ -1,6 +1,7 @@
 body {
     background: url(background.jpg);
 }
+
 .root {
     height: 95vh;
     display: flex;
@@ -10,20 +11,46 @@ body {
     font-family: "Oswald", sans-serif;
     font-weight: 400;
     font-size: 44px;
+    
+}
+
+.root h1{
     background: -webkit-linear-gradient(#000000, #84bbdf);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.root div {
+
+.root .countdown {
     background: -webkit-linear-gradient(#ffffff, #7bdbf3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.root .days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+}
+
+.days .day-card{
+    margin: 50px 25px;
+}
+
+.max-temp, .min-temp {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+
 @media screen and (max-width: 900px) {
     .root h1 {
         font-size: 22px;
     }
+
     .root div {
         font-size: 25px;
     }
 }
+
