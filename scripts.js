@@ -104,6 +104,8 @@ async function GenerateDayCards() {
           ],
         },
         options: {
+          maintainAspectRatio:false,
+          responsive: true,
           scales: {
             y: {
               beginAtZero: true,
@@ -113,7 +115,7 @@ async function GenerateDayCards() {
       });
       document.querySelector(".chart-container").appendChild(canvas);
       chart.canvas.parentNode.style.height = "25vh";
-      window.innerWidth > 900 ? chart.canvas.parentNode.style.width = "50vw" : chart.canvas.parentNode.style.width = "80vw"
+      window.innerWidth > 900 ? chart.canvas.parentNode.style.width = "80vw" : chart.canvas.parentNode.style.width = "80vw"
       chart.canvas.parentNode.style.backgroundColor = "none";
       if (i == 0) {
           document.querySelector(".hourly-data").innerHTML = `

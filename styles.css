@@ -44,6 +44,7 @@ h2 {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 25px;
   justify-content: center;
+  user-select: none;
 }
 .root .hourly {
   display: flex;
@@ -59,12 +60,13 @@ h2 {
 .root .hourly-data, .root .chart-container {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 25px;
+  padding: 5px;
 }
 .days .day-card {
   margin: 50px 20px;
   background-color: rgba(19, 129, 231, 0.5);
   text-align: center;
-  padding: 5px;
+  padding: 10px;
   border-radius: 20px;
 }
 
