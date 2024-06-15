@@ -56,59 +56,65 @@ async function GenerateDayCards() {
         <div class="max-temp">${data.daily.temperature_2m_max[i]}°</div>
         <div class="min-temp">${data.daily.temperature_2m_min[i]}°</div>
     </div>`;
+    card.addEventListener("click", () => {
+      let canvas = document.createElement("canvas");
+      let chart = new Chart(canvas, {
+        type: "line",
+        data: {
+          labels: [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+          ],
+          datasets: [
+            {
+              label: "Hőmérséklet",
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+      
+      document.querySelector(".chart-container").appendChild(canvas);
+      chart.canvas.parentNode.style.height = "25vh";
+      chart.canvas.parentNode.style.width = "50vw";
+      chart.canvas.parentNode.style.backgroundColor = "white";
 
-    card.onclick += () => {};
+    });
+
     document.querySelector(".days").appendChild(card);
   }
 }
-
-const ctx = document.getElementById("chart");
-new Chart(ctx, {
-  type: "line",
-  data: {
-    labels: [
-      "0",
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11",
-      "12",
-      "13",
-      "14",
-      "15",
-      "16",
-      "17",
-      "18",
-      "19",
-      "20",
-      "21",
-      "22",
-      "23",
-      "24",
-    ],
-    datasets: [
-      {
-        label: "Hőmérséklet",
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-  },
-});
 
 GenerateDayCards();
 
