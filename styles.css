@@ -14,7 +14,7 @@ h2 {
 }
 
 .root {
-  height: 95vh;
+  height: 110vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,13 +34,32 @@ h2 {
   -webkit-text-fill-color: transparent;
   margin: 0 0 15px 0 !important;
 }
-
+.root .temp {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 .root .days {
   display: flex;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 25px;
+  justify-content: center;
 }
-
+.root .hourly {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+.root .hourly-data {
+  width: 80vw;
+}
+.root .hourly-data, .root .chart-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 25px;
+}
 .days .day-card {
   margin: 50px 20px;
   background-color: rgba(19, 129, 231, 0.5);
@@ -81,8 +100,9 @@ h2 {
 
 @media screen and (max-width: 900px) {
   body {
+    background-image: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-attachment: fixed;
   }
 
   .days {
@@ -106,7 +126,7 @@ h2 {
   }
 
   .root {
-    height: 100vh;
+    height: 160vh;
   }
 
   .root h1 {

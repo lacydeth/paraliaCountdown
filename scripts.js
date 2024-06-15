@@ -5,9 +5,9 @@ let _minute = _second * 60;
 let _hour = _minute * 60;
 let _day = _hour * 24;
 let timer;
+let now = new Date();
 
 function showRemaining() {
-  let now = new Date();
   let distance = end - now;
 
   let days = Math.floor(distance / _day);
@@ -20,7 +20,7 @@ function showRemaining() {
   ).textContent = `${days} nap ${hours} óra ${minutes} perc ${seconds} másodperc`;
 
   if (end <= now) {
-    document.querySelector("#anyad").innerHTML = "🐋NYARALUNK!🐋";
+    document.querySelector("#countLabel").innerHTML = "🐋NYARALUNK!🐋";
     document.querySelector(".countdown").textContent = "";
     return;
   }
@@ -47,6 +47,7 @@ async function WeatherAPI() {
 async function GenerateDayCards() {
   let data = await WeatherAPI();
   console.log(data);
+  let dailyTemp = splitArray(data.hourly.temperature_2m, 24);
   for (let i = 0; i < 7; i++) {
     let card = document.createElement("div");
     card.classList.add("day-card");
@@ -57,6 +58,10 @@ async function GenerateDayCards() {
         <div class="min-temp">${data.daily.temperature_2m_min[i]}°</div>
     </div>`;
     card.addEventListener("click", () => {
+        if (document.querySelector(".chart-container").children.count != 0) {
+            document.querySelector(".chart-container").innerHTML = "";
+            document.querySelector(".hourly-data").innerHTML = "";
+        }
       let canvas = document.createElement("canvas");
       let chart = new Chart(canvas, {
         type: "line",
@@ -91,8 +96,10 @@ async function GenerateDayCards() {
           datasets: [
             {
               label: "Hőmérséklet",
-              data: [12, 19, 3, 5, 2, 3],
+              data: dailyTemp[i],
               borderWidth: 1,
+              borderColor: '#FF6384',
+              backgroundColor: '#FFB1C1',
             },
           ],
         },
@@ -104,18 +111,37 @@ async function GenerateDayCards() {
           },
         },
       });
-      
       document.querySelector(".chart-container").appendChild(canvas);
       chart.canvas.parentNode.style.height = "25vh";
-      chart.canvas.parentNode.style.width = "50vw";
-      chart.canvas.parentNode.style.backgroundColor = "white";
-
+      window.innerWidth > 900 ? chart.canvas.parentNode.style.width = "50vw" : chart.canvas.parentNode.style.width = "80vw"
+      chart.canvas.parentNode.style.backgroundColor = "none";
+      if (i == 0) {
+          document.querySelector(".hourly-data").innerHTML = `
+          <div class="current-temp">
+          🌡️ ${data.hourly.temperature_2m[now.getHours()]} ${data.hourly_units.temperature_2m}
+          </div>
+          <div class="current-wind">
+          💨 ${data.hourly.wind_speed_180m[now.getHours()]} ${data.hourly_units.wind_speed_180m}
+          </div>
+          <div class="current-rain">
+          🌧️ ${data.hourly.rain[now.getHours()]} ${data.hourly_units.rain}
+          </div>
+          `;
+        }
     });
-
+    
     document.querySelector(".days").appendChild(card);
-  }
+}
 }
 
+function splitArray(originalArray, chunkSize) {
+    let result = [];
+    for (let i = 0; i < originalArray.length; i += chunkSize) {
+        let chunk = originalArray.slice(i, i + chunkSize);
+        result.push(chunk);
+    }
+    return result;
+}
 GenerateDayCards();
 
 // Object { latitude: 40.3125, longitude: 22.625, generationtime_ms: 0.16200542449951172, utc_offset_seconds: 10800, timezone: "Europe/Athens", timezone_abbreviation: "EEST", elevation: 6, hourly_units: {…}, hourly: {…}, daily_units: {…}, … }
