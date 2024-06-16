@@ -45,9 +45,9 @@ async function WeatherAPI() {
 }
 
 async function GenerateDayCards() {
-  let now = new Date();
   let data = await WeatherAPI();
-  console.log(data);
+  
+  let now = new Date();
   let dailyTemp = splitArray(data.hourly.temperature_2m, 24);
   for (let i = 0; i < 7; i++) {
     let date = new Date(data.daily.time[i]);
@@ -116,9 +116,6 @@ async function GenerateDayCards() {
         },
       });
       document.querySelector(".chart-container").appendChild(canvas);
-      chart.canvas.parentNode.style.height = "25vh";
-      window.innerWidth > 900 ? chart.canvas.parentNode.style.width = "80vw" : chart.canvas.parentNode.style.width = "80vw"
-      chart.canvas.parentNode.style.backgroundColor = "none";
       if (i == 0) {
           document.querySelector(".hourly-data").innerHTML = `
           <div class="current-temp">
@@ -150,29 +147,3 @@ function splitArray(originalArray, chunkSize) {
     return result;
 }
 GenerateDayCards();
-
-// Object { latitude: 40.3125, longitude: 22.625, generationtime_ms: 0.16200542449951172, utc_offset_seconds: 10800, timezone: "Europe/Athens", timezone_abbreviation: "EEST", elevation: 6, hourly_units: {…}, hourly: {…}, daily_units: {…}, … }
-// ​
-// daily: Object { time: (7) […], temperature_2m_max: (7) […], temperature_2m_min: (7) […], … }
-// ​
-// daily_units: Object { time: "iso8601", temperature_2m_max: "°C", temperature_2m_min: "°C", … }
-// ​
-// elevation: 6
-// ​
-// generationtime_ms: 0.16200542449951172
-// ​
-// hourly: Object { time: (168) […], temperature_2m: (168) […], rain: (168) […], … }
-// ​
-// hourly_units: Object { time: "iso8601", temperature_2m: "°C", rain: "mm", … }
-// ​
-// latitude: 40.3125
-// ​
-// longitude: 22.625
-// ​
-// timezone: "Europe/Athens"
-// ​
-// timezone_abbreviation: "EEST"
-// ​
-// utc_offset_seconds: 10800
-// ​
-// <prototype>: Object { … }

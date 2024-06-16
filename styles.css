@@ -41,6 +41,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  align-items: center;
 }
 .root .days {
   display: flex;
@@ -58,7 +59,7 @@ h2 {
   gap: 6px;
 }
 .root .hourly-data {
-  width: 80vw;
+  width: 70vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -110,7 +111,10 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-
+.chart-container canvas {
+  width: 70vw !important;
+  height: 25vh !important;
+}
 @media screen and (max-width: 900px) {
   body {
     background-attachment: fixed;
@@ -144,9 +148,6 @@ h2 {
   .root h1 {
     font-size: 1.6rem;
   }
-  .root .hourly-data {
-    width: 100%;
-  }
   .root .countdown {
     font-size: 25px;
   }
@@ -154,8 +155,12 @@ h2 {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 25px;
     flex-direction: column;
+    width: 80vw;
   }
   .root .hourly-data > div {
     background: none;
+  }
+  .chart-container canvas {
+    width: 80vw !important;
   }
 }
