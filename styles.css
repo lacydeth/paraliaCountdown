@@ -60,7 +60,6 @@ h2 {
 .root .hourly-data, .root .chart-container {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 25px;
-  padding: 5px;
 }
 .days .day-card {
   margin: 50px 20px;
