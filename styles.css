@@ -26,8 +26,11 @@ h2 {
 }
 .root h1 {
     font-size: 4rem;
-  }
-
+}
+.root h4 {
+    font-size: 1rem;
+    color: #527bee;
+}
 .root .countdown {
   background: -webkit-linear-gradient(#ffffff, #7bdbf3);
   -webkit-background-clip: text;
@@ -56,10 +59,17 @@ h2 {
 }
 .root .hourly-data {
   width: 80vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
 }
-.root .hourly-data, .root .chart-container {
+.root .hourly-data > div, .root .chart-container {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 25px;
+}
+.root .hourly-data > div {
+  flex-grow: 1;
 }
 .days .day-card {
   margin: 50px 20px;
@@ -113,7 +123,9 @@ h2 {
   h2 {
     font-size: 1.2rem;
   }
-
+  h4 {
+    font-size: 1rem;
+  }
   .day-card {
     margin: 10px !important;
   }
@@ -135,5 +147,13 @@ h2 {
   }
   .root .countdown {
     font-size: 25px;
+  }
+  .root .hourly-data { 
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    flex-direction: column;
+  }
+  .root .hourly-data > div {
+    background: none;
   }
 }

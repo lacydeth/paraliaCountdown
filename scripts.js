@@ -50,11 +50,13 @@ async function GenerateDayCards() {
   console.log(data);
   let dailyTemp = splitArray(data.hourly.temperature_2m, 24);
   for (let i = 0; i < 7; i++) {
+    let date = new Date(data.daily.time[i]);
     let card = document.createElement("div");
     card.classList.add("day-card");
     card.innerHTML = `
     <div class="days-temp">
         <h2>${data.daily.time[i].substring(5)}</h2>
+        <h4>${date.toLocaleDateString("hu-Hu", {weekday: 'long'})}</h4>
         <div class="max-temp">${data.daily.temperature_2m_max[i]}°</div>
         <div class="min-temp">${data.daily.temperature_2m_min[i]}°</div>
     </div>`;
@@ -128,6 +130,9 @@ async function GenerateDayCards() {
           </div>
           <div class="current-rain">
           🌧️ ${data.hourly.rain[now.getHours()]} ${data.hourly_units.rain}
+          </div>
+          <div class="current-uv"> 
+          ☀️ ${data.daily.uv_index_max[i]}
           </div>
           `;
         }
