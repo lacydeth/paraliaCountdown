@@ -45,7 +45,7 @@ h2 {
 .root .days {
   display: flex;
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 25px;
+  border-radius: 12px;
   justify-content: center;
   user-select: none;
 }
@@ -55,7 +55,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 10px;
+  gap: 6px;
 }
 .root .hourly-data {
   width: 80vw;
@@ -66,7 +66,7 @@ h2 {
 }
 .root .hourly-data > div, .root .chart-container {
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 25px;
+  border-radius: 15px;
 }
 .root .hourly-data > div {
   flex-grow: 1;
@@ -76,9 +76,11 @@ h2 {
   background-color: rgba(19, 129, 231, 0.5);
   text-align: center;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 12px;
 }
-
+.hourly .chart-container {
+  margin: 10px;
+}
 .days .day-card:hover{
     cursor: pointer;
 }
