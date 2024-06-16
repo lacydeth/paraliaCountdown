@@ -5,9 +5,9 @@ let _minute = _second * 60;
 let _hour = _minute * 60;
 let _day = _hour * 24;
 let timer;
-let now = new Date();
 
 function showRemaining() {
+  let now = new Date();
   let distance = end - now;
 
   let days = Math.floor(distance / _day);
@@ -45,6 +45,7 @@ async function WeatherAPI() {
 }
 
 async function GenerateDayCards() {
+  let now = new Date();
   let data = await WeatherAPI();
   console.log(data);
   let dailyTemp = splitArray(data.hourly.temperature_2m, 24);
